@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     public String usuEstado;
 
     String IP_Server = Httppostaux.IP_Server;
-    String URL_connect="http://"+IP_Server+":8080/touchupt/acces.php";//ruta en donde estan nuestros archivos
+    String URL_connect="http://"+IP_Server+"/touchupt/acces.php";//ruta en donde estan nuestros archivos
 
     //private FloatingActionButton blogin;
     Httppostaux post;
@@ -80,6 +80,16 @@ public class LoginActivity extends AppCompatActivity {
                     err_login();
                 }
 
+            }
+        });
+//------------------REGISTER
+        btnReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
     }

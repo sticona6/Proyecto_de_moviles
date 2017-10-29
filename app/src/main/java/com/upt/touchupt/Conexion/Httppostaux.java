@@ -23,7 +23,7 @@ import java.util.ArrayList;
  */
 
 public class Httppostaux {
-    public static String IP_Server = "192.168.0.4";
+    public static String IP_Server = "192.168.0.6:8080";
     InputStream is = null;
     String result = "";
 
