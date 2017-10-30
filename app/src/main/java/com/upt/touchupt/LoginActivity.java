@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     String IP_Server = Httppostaux.IP_Server;
-    String URL_connect="http://"+"192.168.0.6:8080"+"/touchupt/funciones_bd.php";//ruta en donde estan nuestros archivos
+    String URL_connect="http://"+IP_Server+"/touchupt/funciones_bd.php";//ruta en donde estan nuestros archivos
 
     //volley
     private RequestQueue requestQueue;
