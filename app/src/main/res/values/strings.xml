@@ -2,4 +2,12 @@
     <string name="app_name">TouchUPT</string>
     <string name="login_activity_name">Iniciar sesión</string>
     <string name="register_activity_name">Registrar</string>
+    <string name="title_activity_maps_client">Map</string>
+
+    <string name="tap_instructions">Tap or long press on the map</string>
+    <string name="move_the_camera">Move the camera</string>
+    <string name="title_activity_ejemplo">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
