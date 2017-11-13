@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.upt.touchupt.SignUpActivity">
 
 <ScrollView
-xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:fitsSystemWindows="true">
@@ -15,71 +22,68 @@ android:fitsSystemWindows="true">
     android:paddingRight="24dp">
 
     <!-- Name Label -->
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
 
         <EditText android:id="@+id/input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_border"
+            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
+            android:layout_marginBottom="24dp"
             android:inputType="textPersonName"
             android:hint="Nombre" />
 
-    </android.support.design.widget.TextInputLayout>
-
     <!-- mobile number -->
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+
         <EditText android:id="@+id/input_mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_border"
+            android:drawableLeft="@drawable/ic_smartphone_black_24dp"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
+            android:layout_marginBottom="24dp"
             android:inputType="number"
             android:hint="Número de celular" />
-    </android.support.design.widget.TextInputLayout>
 
     <!--  Email Label -->
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+
         <EditText android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_border"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
+            android:layout_marginBottom="24dp"
             android:inputType="textEmailAddress"
             android:hint="Correo electrónico" />
-    </android.support.design.widget.TextInputLayout>
 
     <!-- Password Label -->
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+
         <EditText android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_border"
+            android:drawableLeft="@drawable/ic_https_black_24dp"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
+            android:layout_marginBottom="24dp"
             android:inputType="textPassword"
             android:hint="Contraseña"/>
-    </android.support.design.widget.TextInputLayout>
 
     <!-- Password Re-enter Label -->
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+
         <EditText android:id="@+id/input_reContraseña"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_border"
+            android:drawableLeft="@drawable/ic_https_black_24dp"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
             android:inputType="textPassword"
             android:hint="Escriba la contraseña otra vez"/>
-    </android.support.design.widget.TextInputLayout>
 
     <!-- Signup Button -->
     <android.support.v7.widget.AppCompatButton
@@ -89,6 +93,8 @@ android:fitsSystemWindows="true">
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:padding="12dp"
+        android:background="#303F9F"
+        android:textColor="@color/white"
         android:text="Crear una cuenta"/>
 
     <TextView android:id="@+id/link_login"
@@ -101,3 +107,4 @@ android:fitsSystemWindows="true">
 
 </LinearLayout>
 </ScrollView>
+</LinearLayout>
