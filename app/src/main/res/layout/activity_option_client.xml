@@ -27,11 +27,11 @@
                     android:id="@+id/btOptionHelp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_help_outline_2x"
-                    android:drawablePadding="8dp"
-                    android:drawableTint="#fff"
+                    android:drawableLeft="@drawable/ic_build_white_24dp"
+                    android:padding="12dp"
+                    android:background="#303F9F"
+                    android:textColor="@color/white"
                     android:text="Necesito ayuda"
-                    android:textColor="@android:color/white"
                     />
 
                 <Button
@@ -40,11 +40,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/btOptionHelp"
-                    android:drawableLeft="@drawable/ic_help_outline_2x"
-                    android:drawablePadding="8dp"
-                    android:drawableTint="#fff"
+                    android:drawableLeft="@drawable/ic_build_white_24dp"
+                    android:padding="12dp"
+                    android:background="#303F9F"
+                    android:textColor="@color/white"
                     android:text="Tengo experiencia"
-                    android:textColor="@android:color/white"
                     />
             </LinearLayout>
 

@@ -95,13 +95,14 @@ android:fitsSystemWindows="true">
         android:padding="12dp"
         android:background="#303F9F"
         android:textColor="@color/white"
-        android:text="Crear una cuenta"/>
+        android:text="Crear cuenta"/>
 
     <TextView android:id="@+id/link_login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="¿Ya eres usuario? Iniciar sesión"
+        android:textColor="#303F9F"
         android:gravity="center"
         android:textSize="16dip"/>
 

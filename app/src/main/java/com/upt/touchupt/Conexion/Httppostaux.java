@@ -23,7 +23,8 @@ import java.util.ArrayList;
  */
 
 public class Httppostaux {
-    public static String IP_Server = "192.168.227.1:8080";
+
+    public static String IP_Server = "192.168.43.173:8080";
     InputStream is = null;
     String result = "";
 
@@ -39,11 +40,8 @@ public class Httppostaux {
             return getjsonarray();
 
         }else{
-
             return null;
-
         }
-
     }
     //peticion HTTP
     private void httppostconnect(ArrayList<NameValuePair> parametros, String urlwebserver){

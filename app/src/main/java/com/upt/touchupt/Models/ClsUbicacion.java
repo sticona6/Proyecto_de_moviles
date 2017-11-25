@@ -6,28 +6,39 @@ package com.upt.touchupt.Models;
 
 public class ClsUbicacion {
 
-    private String IdUbicacion;
+    private Integer IdUbicacion;
+    private Integer IdUsuario;
     private String Latitud;
     private String Longitud;
-    private String IdUsuario;
     private String Ciudad;
     private String Direccion;
 
-    public ClsUbicacion(String idUbicacion, String latitud, String longitud, String idUsuario, String ciudad, String direccion) {
+    public ClsUbicacion() {
+    }
+
+    public ClsUbicacion(Integer idUbicacion, Integer idUsuario, String latitud, String longitud, String ciudad, String direccion) {
         IdUbicacion = idUbicacion;
+        IdUsuario = idUsuario;
         Latitud = latitud;
         Longitud = longitud;
-        IdUsuario = idUsuario;
         Ciudad = ciudad;
         Direccion = direccion;
     }
 
-    public String getIdUbicacion() {
+    public Integer getIdUbicacion() {
         return IdUbicacion;
     }
 
-    public void setIdUbicacion(String idUbicacion) {
+    public void setIdUbicacion(Integer idUbicacion) {
         IdUbicacion = idUbicacion;
+    }
+
+    public Integer getIdUsuario() {
+        return IdUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        IdUsuario = idUsuario;
     }
 
     public String getLatitud() {
@@ -44,14 +55,6 @@ public class ClsUbicacion {
 
     public void setLongitud(String longitud) {
         Longitud = longitud;
-    }
-
-    public String getIdUsuario() {
-        return IdUsuario;
-    }
-
-    public void setIdUsuario(String idUsuario) {
-        IdUsuario = idUsuario;
     }
 
     public String getCiudad() {

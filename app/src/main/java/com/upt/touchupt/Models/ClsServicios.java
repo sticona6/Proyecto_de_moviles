@@ -1,30 +1,43 @@
 package com.upt.touchupt.Models;
 
-import android.graphics.Bitmap;
-
 /**
  * Created by SERGIO on 06/11/2017.
  */
 
 public class ClsServicios {
-    private String IdServicio;
-    private String IdDetalleServicio;
-    private String FechaServicio;
+
+    private Integer IdServicio;
+    private Integer IdUsuario;
     private String NombreServicio;
+    private String NivelServicio;
+    private String FechaServicio;
 
-    private String IdUsuario;
-    private String nombre;
-    private String email;
-    private String DataFoto;
-    private Bitmap foto = null;
-    private String nivel;
-    private String celular;
+    public ClsServicios() {
+    }
 
-    private String IdUbicacion;
-    private String Latitud;
-    private String Longitud;
-    private String Ciudad;
-    private String Direccion;
+    public ClsServicios(Integer idServicio, Integer idUsuario, String nombreServicio, String nivelServicio, String fechaServicio) {
+        IdServicio = idServicio;
+        IdUsuario = idUsuario;
+        NombreServicio = nombreServicio;
+        NivelServicio = nivelServicio;
+        FechaServicio = fechaServicio;
+    }
+
+    public Integer getIdServicio() {
+        return IdServicio;
+    }
+
+    public void setIdServicio(Integer idServicio) {
+        IdServicio = idServicio;
+    }
+
+    public Integer getIdUsuario() {
+        return IdUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        IdUsuario = idUsuario;
+    }
 
     public String getNombreServicio() {
         return NombreServicio;
@@ -34,20 +47,12 @@ public class ClsServicios {
         NombreServicio = nombreServicio;
     }
 
-    public String getIdServicio() {
-        return IdServicio;
+    public String getNivelServicio() {
+        return NivelServicio;
     }
 
-    public void setIdServicio(String idServicio) {
-        IdServicio = idServicio;
-    }
-
-    public String getIdDetalleServicio() {
-        return IdDetalleServicio;
-    }
-
-    public void setIdDetalleServicio(String idDetalleServicio) {
-        IdDetalleServicio = idDetalleServicio;
+    public void setNivelServicio(String nivelServicio) {
+        NivelServicio = nivelServicio;
     }
 
     public String getFechaServicio() {
@@ -56,101 +61,5 @@ public class ClsServicios {
 
     public void setFechaServicio(String fechaServicio) {
         FechaServicio = fechaServicio;
-    }
-
-    public String getIdUsuario() {
-        return IdUsuario;
-    }
-
-    public void setIdUsuario(String idUsuario) {
-        IdUsuario = idUsuario;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getDataFoto() {
-        return DataFoto;
-    }
-
-    public void setDataFoto(String dataFoto) {
-        DataFoto = dataFoto;
-    }
-
-    public Bitmap getFoto() {
-        return foto;
-    }
-
-    public void setFoto(Bitmap foto) {
-        this.foto = foto;
-    }
-
-    public String getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
-    public String getIdUbicacion() {
-        return IdUbicacion;
-    }
-
-    public void setIdUbicacion(String idUbicacion) {
-        IdUbicacion = idUbicacion;
-    }
-
-    public String getLatitud() {
-        return Latitud;
-    }
-
-    public void setLatitud(String latitud) {
-        Latitud = latitud;
-    }
-
-    public String getLongitud() {
-        return Longitud;
-    }
-
-    public void setLongitud(String longitud) {
-        Longitud = longitud;
-    }
-
-    public String getCiudad() {
-        return Ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        Ciudad = ciudad;
-    }
-
-    public String getDireccion() {
-        return Direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        Direccion = direccion;
     }
 }

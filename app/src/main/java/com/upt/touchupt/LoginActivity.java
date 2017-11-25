@@ -32,7 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnIr;
     private TextView btnReg;
 
-
+    private static final int INTERVALO = 2000; //2 segundos para salir
+    private long tiempoPrimerClick;
 
     String IP_Server = Httppostaux.IP_Server;
     String URL_connect="http://"+IP_Server+"/touchupt/acces.php";//ruta en donde estan nuestros archivos
@@ -73,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
 
 //------------------LOGIN
 
-
         btnIr.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -86,14 +86,16 @@ public class LoginActivity extends AppCompatActivity {
 
                     //si pasamos esa validacion ejecutamos el asynctask pasando el usuario y clave como parametros
                     new asynclogin().execute(usuario,passw);
+                    Log.e("datos usu y contra", usuario + passw);
 
-                }else{
+                }else if(checklogindata(usuario , passw )==false){
                     //si detecto un error en la primera validacion vibrar y mostrar un Toast con un mensaje de error.
                     err_login();
+                }else{
+                    err_login3();
                 }
             }
         });
-
 
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,10 +103,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
                 startActivity(intent);
+                finish();
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+
             }
         });
     }
+
     /*   public void onClick1(View v){
         Toast.makeText(this, "Bienvenido :)", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this,Agenda.class);
@@ -113,21 +118,25 @@ public class LoginActivity extends AppCompatActivity {
 
     //vibra y muestra un Toast
     public void err_login(){
-        //Vibrator vibrator =(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        //vibrator.vibrate(200);
+
         Toast toast1 = Toast.makeText(getApplicationContext(),"Usuario o password incorrectos", Toast.LENGTH_SHORT);
         toast1.show();
+
     }
+    //vibra y muestra un Toast
     public void err_login2(){
-        //Vibrator vibrator =(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        //vibrator.vibrate(200);
-        Toast toast1 = Toast.makeText(getApplicationContext(),"Error 2", Toast.LENGTH_SHORT);
+
+        Toast toast1 = Toast.makeText(getApplicationContext(),"Conectece a internet", Toast.LENGTH_SHORT);
+        toast1.show();
+    }
+    //vibra y muestra un Toast
+    private void err_login3() {
+        Toast toast1 = Toast.makeText(getApplicationContext(),"Ingrese Usuario y password", Toast.LENGTH_SHORT);
         toast1.show();
     }
     /*Valida el estado del logueo solamente necesita como parametros el usuario y passw*/
     public Boolean loginstatus(String username ,String password ) {
         String logstatus="null";
-        String lognivel="null";
 
     	/*Creamos un ArrayList del tipo nombre valor para agregar los datos recibidos por los parametros anteriores
     	 * y enviarlo mediante POST a nuestro sistema para relizar la validacion*/
@@ -147,8 +156,8 @@ public class LoginActivity extends AppCompatActivity {
                 json_data = jdatos.getJSONObject(0); //leemos el primer segmento en nuestro caso el unico
                 logstatus=json_data.getString("EstadoUsuario");//accedemos al valor
 
-                usuNombre = json_data.getString("Nombre");
-                usuApellidos = json_data.getString("Apellido");
+                usuID = json_data.getString("IdUsuario");
+                usuNombre = json_data.getString("Nombres");
                 usuEstado = json_data.getString("EstadoUsuario");
                 usuEmail = json_data.getString("Email");
                 usuFoto = json_data.getString("Foto");
@@ -176,19 +185,15 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
     //validamos si no hay ningun campo en blanco
     public boolean checklogindata(String username ,String password ){
 
         if 	(username.equals("") || password.equals("")){
             Log.e("Login ui", "checklogindata user or pass error");
             return false;
-
         }else{
-
             return true;
         }
-
     }
 
     class asynclogin extends AsyncTask< String, String, String > {
@@ -227,54 +232,62 @@ public class LoginActivity extends AppCompatActivity {
             if (result.equals("ok")){
                 limpiarcajas();
                 if(usuNivel.equals("cliente")){
-                    Intent i=new Intent(LoginActivity.this, OptionClientActivity.class);
-
-                    i.putExtra("usernombre",usuNombre);
-                    i.putExtra("userapellidos",usuApellidos);
-                    i.putExtra("userestado",usuEstado);
-                    i.putExtra("useremail",usuEmail);
-                    i.putExtra("userfoto",usuFoto);
-                    i.putExtra("usernivel",usuNivel);
-                    i.putExtra("usercelular",usuCelular);
-
-                    startActivity(i);
+                    Intent intent=new Intent(LoginActivity.this, WelcomActivity.class);
+                    intent.putExtra("IdUsuario",usuID);
+                    intent.putExtra("usernombre",usuNombre);
+                    intent.putExtra("userestado",usuEstado);
+                    intent.putExtra("useremail",usuEmail);
+                    intent.putExtra("userfoto",usuFoto);
+                    intent.putExtra("usernivel",usuNivel);
+                    intent.putExtra("usercelular",usuCelular);
+                    startActivity(intent);
+                    finish();
+                    overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 }else if(usuNivel.equals("empleado")){
-                    Intent i=new Intent(LoginActivity.this, ServicioEmployeeActivity.class);
-
-                    i.putExtra("usernombre",usuNombre);
-                    i.putExtra("userapellidos",usuApellidos);
-                    i.putExtra("userestado",usuEstado);
-                    i.putExtra("useremail",usuEmail);
-                    i.putExtra("userfoto",usuFoto);
-                    i.putExtra("usernivel",usuNivel);
-                    i.putExtra("usercelular",usuCelular);
-
-                    startActivity(i);
+                    Intent intent=new Intent(LoginActivity.this, ServicioEmployeeActivity.class);
+                    intent.putExtra("IdUsuario",usuID);
+                    intent.putExtra("usernombre",usuNombre);
+                    intent.putExtra("userestado",usuEstado);
+                    intent.putExtra("useremail",usuEmail);
+                    intent.putExtra("userfoto",usuFoto);
+                    intent.putExtra("usernivel",usuNivel);
+                    intent.putExtra("usercelular",usuCelular);
+                    startActivity(intent);
+                    finish();
+                    overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 }else if(usuNivel.equals("administrador")){
-                    Intent i=new Intent(LoginActivity.this, ServiciosAdministratorActivity.class);
-
-                    i.putExtra("usernombre",usuNombre);
-                    i.putExtra("userapellidos",usuApellidos);
-                    i.putExtra("userestado",usuEstado);
-                    i.putExtra("useremail",usuEmail);
-                    i.putExtra("userfoto",usuFoto);
-                    i.putExtra("usernivel",usuNivel);
-                    i.putExtra("usercelular",usuCelular);
-
-                    startActivity(i);
+                    Intent intent=new Intent(LoginActivity.this, ListRequestActivity.class);
+                    intent.putExtra("IdUsuario",usuID);
+                    intent.putExtra("usernombre",usuNombre);
+                    intent.putExtra("userestado",usuEstado);
+                    intent.putExtra("useremail",usuEmail);
+                    intent.putExtra("userfoto",usuFoto);
+                    intent.putExtra("usernivel",usuNivel);
+                    intent.putExtra("usercelular",usuCelular);
+                    startActivity(intent);
+                    finish();
+                    overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 }
             }else{
                 err_login2();
             }
-
         }
+    }
 
+    @Override
+    public void onBackPressed(){
+        if (tiempoPrimerClick + INTERVALO > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }else {
+            Toast.makeText(this, "Vuelve a presionar para salir", Toast.LENGTH_SHORT).show();
+        }
+        tiempoPrimerClick = System.currentTimeMillis();
     }
 
     private void limpiarcajas(){
         user.setText("");
         pass.setText("");
         user.setFocusable(true);
-
     }
 }
